@@ -1,0 +1,17 @@
+#map-container{
+    margin: 27% 0 0 18%;
+    position: relative;
+}
+
+#map, #marker-container {
+height: 720px; 
+width: 1280px;
+}
+
+#map {
+    position: absolute;
+}
+
+#marker-container {
+    position: absolute;
+}

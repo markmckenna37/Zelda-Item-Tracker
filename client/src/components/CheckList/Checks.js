@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../../utils/API";
 import Area from "../AreaList/Areas"
-import { Link } from "react-router-dom";
+import CheckContext from "../../utils/checkContext"
+import DisplayChecks from "../DisplayChecks/index"
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
+import MessageContext from "../../utils/messageContext";
 
-function Checks(props) {
-  const { message } = props
-  // Setting our component's initial state
-  const [checks, setChecks] = useState([])
-  const [filteredChecks, setFilteredChecks] = useState([])
-  // const [formObject, setFormObject] = useState({})
+function Checks() {
+  const [checkList, setCheckList] = useState({
+    checkList: [],
+  })
+const [filteredCheckList, setFilteredCheckList] = useState({
+  filteredCheckList: []
+})
+const {message} = useContext(MessageContext)
 
-  // Load all books and store them with setBooks
   useEffect(() => {
     loadChecks()
+    filterChecks()
   }, [])
 
   // Loads all books and sets them to books
@@ -23,7 +27,7 @@ function Checks(props) {
     API.getChecks()
       .then(res => {
           console.log(res.data)
-        setChecks(res.data)
+        setCheckList(res.data)
       })
       .catch(err => console.log(err));
   };
@@ -32,18 +36,23 @@ function Checks(props) {
   function filterChecks(){
     console.log(message)
       let filter = []
-      for (let i = 0; i < checks.length; i++) {
-          if (checks[i].location === message) {
-            filter.push(checks[i].title)
+      for (let i = 0; i < checkList.length; i++) {
+          if (checkList[i].location === message) {
+            filter.push(checkList[i].title)
           }
       }
-      setFilteredChecks(filter)
-      console.log(filter)
+      setFilteredCheckList(filter)
+      console.log(filteredCheckList)
     }
 
     return (
       <>
-      {/* <Area filterChecks={filterChecks}/> */}
+      <CheckContext.Provider value={
+        {checks: filteredCheckList}
+      }>
+      <button onClick={() => {filterChecks()}}>asedfggr</button>
+      <DisplayChecks checks={filteredCheckList} />
+      </CheckContext.Provider>
       </>
     );
   }

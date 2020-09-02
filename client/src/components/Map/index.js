@@ -9,7 +9,7 @@ function Map(props) {
         <div id="map-container">
             <img id="map" src={map} alt="Hyrule Map"/>
             <div id="marker-container">
-                <Area setMessage={props.setMessage} filterChecks={props.filterChecks}/>
+                <Area setMessage={props.setMessage} setCheckList={props.setCheckList}/>
             </div>
         </div>
     )

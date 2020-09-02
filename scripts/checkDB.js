@@ -43,7 +43,7 @@ const checkSeed = [
     {
       name: "dekuMap",
       title: "Map Chest",
-      location: "dekuTre",
+      location: "dekuTree",
       requiredItems: [],
       isAccessible: true,
       isChecked: false,
@@ -51,7 +51,7 @@ const checkSeed = [
     {
       name: "dekuCompass",
       title: "Compass Chest",
-      location: "dekuTre",
+      location: "dekuTree",
       requiredItems: [],
       isAccessible: true,
       isChecked: false,
@@ -59,7 +59,7 @@ const checkSeed = [
     {
       name: "compassChestSide",
       title: "Compass Room Side Chest",
-      location: "dekuTre",
+      location: "dekuTree",
       requiredItems: [],
       isAccessible: true,
       isChecked: false,
@@ -67,7 +67,7 @@ const checkSeed = [
     {
       name: "slingshotCheck",
       title: "Slingshot Chest",
-      location: "dekuTre",
+      location: "dekuTree",
       requiredItems: ["dekuShield"],
       isAccessible: false,
       isChecked: false,
@@ -75,7 +75,7 @@ const checkSeed = [
     {
       name: "slingshotChestSide",
       title: "Slingshot Side Chest",
-      location: "dekuTre",
+      location: "dekuTree",
       requiredItems: ["dekuShield"],
       isAccessible: false,
       isChecked: false,
@@ -83,7 +83,7 @@ const checkSeed = [
     {
       name: "ghoma",
       title: "Ghoma",
-      location: "dekuTre",
+      location: "dekuTree",
       requiredItems: ["dekuShield", "slingShot", "kokiriSword"],
       isAccessible: false,
       isChecked: false,
@@ -1810,7 +1810,7 @@ const checkSeed = [
     },
     {
       name: "childClimbEast",
-      title: "",
+      title: "Child Climbing Section East",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1818,7 +1818,7 @@ const checkSeed = [
     },
     {
       name: "childClimbNorth",
-      title: "",
+      title: "Child Climbing Section North",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1826,7 +1826,7 @@ const checkSeed = [
     },
     {
       name: "sunBlockRoom",
-      title: "",
+      title: "Sun Block Room",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1834,7 +1834,7 @@ const checkSeed = [
     },
     {
       name: "silverGauntlets",
-      title: "",
+      title: "Silver Gauntlets Chest",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1842,7 +1842,7 @@ const checkSeed = [
     },
     {
       name: "statueHandChest",
-      title: "",
+      title: "Statue Hand Chest",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1850,7 +1850,7 @@ const checkSeed = [
     },
     {
       name: "NEMainRoomChest",
-      title: "",
+      title: "Northeast Main Room Chest",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1858,7 +1858,7 @@ const checkSeed = [
     },
     {
       name: "mirrorShieldCheck",
-      title: "",
+      title: "Mirror Shield Chest",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1866,7 +1866,7 @@ const checkSeed = [
     },
     {
       name: "fourArmosChest",
-      title: "",
+      title: "Chest Near 4 Armos",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1874,7 +1874,7 @@ const checkSeed = [
     },
     {
       name: "hallwayLeftHiddenChest",
-      title: "",
+      title: "Hidden Hallway Chest 1",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1882,7 +1882,7 @@ const checkSeed = [
     },
     {
       name: "hallwayRightHiddenChest",
-      title: "",
+      title: "Hidden Hallway Chest 2",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1890,7 +1890,7 @@ const checkSeed = [
     },
     {
       name: "spiritBossKey",
-      title: "",
+      title: "Boss Key",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1898,7 +1898,7 @@ const checkSeed = [
     },
     {
       name: "topChest",
-      title: "",
+      title: "Top Room Chest",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1906,7 +1906,7 @@ const checkSeed = [
     },
     {
       name: "twinrova",
-      title: "",
+      title: "Twinrova",
       location: "spiritTemple",
       requiredItems: [],
       isAccessible: false,
@@ -1914,7 +1914,7 @@ const checkSeed = [
     },
     {
       name: "forestTrial",
-      title: "",
+      title: "Forest Trial Chest",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1922,7 +1922,7 @@ const checkSeed = [
     },
     {
       name: "waterTrial1",
-      title: "",
+      title: "Water Trial Chest 1",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1930,7 +1930,7 @@ const checkSeed = [
     },
     {
       name: "waterTrial2",
-      title: "",
+      title: "Water Trial Chest 2",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1938,7 +1938,15 @@ const checkSeed = [
     },
     {
       name: "shadowTrial1",
-      title: "",
+      title: "Shadow Trial Chest",
+      location: "ganonsCastle",
+      requiredItems: [],
+      isAccessible: false,
+      isChecked: false,
+    },
+    {
+      name: "shadowTrial2",
+      title: "Shadow Trial Chest 2",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1946,7 +1954,7 @@ const checkSeed = [
     },
     {
       name: "spiritTrial1",
-      title: "",
+      title: "Spirit Trial Chest 1",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1954,7 +1962,7 @@ const checkSeed = [
     },
     {
       name: "spiritTrial2",
-      title: "",
+      title: "Spirit Trial Chest 2",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1962,7 +1970,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial1",
-      title: "",
+      title: "Light Trial Chest 1",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1970,7 +1978,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial2",
-      title: "",
+      title: "Light Trial Chest 2",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1978,7 +1986,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial3",
-      title: "",
+      title: "Light Trial Chest 3",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1986,7 +1994,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial4",
-      title: "",
+      title: "Light Trial Chest 4",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -1994,7 +2002,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial5",
-      title: "",
+      title: "Light Trial Chest 5",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -2002,7 +2010,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial6",
-      title: "",
+      title: "Light Trial Chest 6",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -2010,7 +2018,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial7",
-      title: "",
+      title: "Light Trial Invisible Chest",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -2018,7 +2026,7 @@ const checkSeed = [
     },
     {
       name: "lightTrial8",
-      title: "",
+      title: "Light Trial Lullaby Chest",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,
@@ -2026,7 +2034,7 @@ const checkSeed = [
     },
     {
       name: "ganonBossKey",
-      title: "",
+      title: "Boss Key",
       location: "ganonsCastle",
       requiredItems: [],
       isAccessible: false,

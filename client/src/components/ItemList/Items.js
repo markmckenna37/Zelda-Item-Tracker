@@ -13,7 +13,7 @@ const gridStyle = {
 function Items() {
   // Setting our component's initial state
   const [items, setItems] = useState([])
-  const [formObject, setFormObject] = useState({})
+  // const [formObject, setFormObject] = useState({})
 
   // Load all books and store them with setBooks
   useEffect(() => {

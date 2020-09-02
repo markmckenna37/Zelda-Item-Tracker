@@ -5,18 +5,12 @@ import "./style.css"
 import "tippy.js/dist/tippy.css"
 
 function Area(props) {
-  const { top, left } = props;
 
-  // const style = {
-  //   position: "absolute",
-  //   top: top,
-  //   left: left
-
-  // };
-
+  
   const [areas, setAreas] = useState([])
+  // const [checks, setChecks] = useState([])
   const [formObject, setFormObject] = useState({})
-
+  const [modalIsOpen, setModalIsOpen] = useState(false)
   // Load all books and store them with setBooks
   useEffect(() => {
     loadAreas()
@@ -31,12 +25,17 @@ function Area(props) {
       .catch(err => console.log(err));
   };
 
+
+
+
   return (
     <>
     {areas.map(area => (
-    <Tippy content={area.title}>
-      <button className="marker" style={{top: area.top, left: area.left}}></button>
-    </Tippy>
+      <div>
+      <Tippy content={area.title}>
+      <button className="marker" style={{top: area.top, left: area.left}} onClick={() => {props.setMessage(area.name); console.log(area.name)}}></button>
+      </Tippy>
+      </div>
     ))}
     
     </>

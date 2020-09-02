@@ -3,7 +3,7 @@ const checksController = require("../../controllers/checksController");
 
 router.route("/")
   .get(checksController.findAll)
-
+  
 router
   .route("/:id")
   .get(checksController.findById)

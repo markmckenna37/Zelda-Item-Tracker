@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import API from "../../utils/API";
+import Area from "../AreaList/Areas"
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
 
-function Checks() {
+function Checks(props) {
+  const { message } = props
   // Setting our component's initial state
   const [checks, setChecks] = useState([])
-  const [formObject, setFormObject] = useState({})
+  const [filteredChecks, setFilteredChecks] = useState([])
+  // const [formObject, setFormObject] = useState({})
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -25,29 +28,23 @@ function Checks() {
       .catch(err => console.log(err));
   };
 
+     
+  function filterChecks(){
+    console.log(message)
+      let filter = []
+      for (let i = 0; i < checks.length; i++) {
+          if (checks[i].location === message) {
+            filter.push(checks[i].title)
+          }
+      }
+      setFilteredChecks(filter)
+      console.log(filter)
+    }
 
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6 sm-12">
-            {checks.length ? (
-              <List>
-                {checks.map(check => (
-                  <ListItem key={check._id}>
-                    <a href={"/checks/" + check._id}>
-                      <strong>
-                        {check.name}
-                      </strong>
-                    </a>
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <>
+      {/* <Area filterChecks={filterChecks}/> */}
+      </>
     );
   }
 

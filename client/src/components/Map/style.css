@@ -1,17 +1,26 @@
 #map-container{
-    margin: 27% 0 0 18%;
+    /* margin: 0 0 50% 0; */
     position: relative;
+    border: 3px solid blue;
+    height: 720px; 
+    width: 1280px;
 }
 
 #map, #marker-container {
-height: 720px; 
-width: 1280px;
+height: 100%; 
+width: 100%;
 }
 
 #map {
     position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 3px solid red;
 }
 
 #marker-container {
     position: absolute;
+    bottom: 0;
+    left: 0;
+    border: 3px solid green;
 }

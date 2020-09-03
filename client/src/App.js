@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Items from "./components/ItemList/Items";
 import DisplayChecks from "./components/DisplayChecks";
 import Checks from "./components/CheckList/Checks"
@@ -16,23 +16,16 @@ const { Header, Content, Footer, Sider } = Layout;
 
 
 function App() {
-  
-
-  // const [checkList, setCheckList] = useState({
-  //   checkList: []
-  // });
-  
-  const [itemList, setItemList] = useState([])
 
   const [message, setMessage] = useState("")
 
-  
   
   return (
     <>
       <MessageContext.Provider value={{
         message: message
       }}>
+        
       <Layout>
         <Header></Header>
         <Layout>

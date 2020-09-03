@@ -33,26 +33,21 @@ function Items() {
   };
 
     function handleItems(id) {
-      let filter = []
+      let filter = [...items]
       let listFilter = []
-      for (let i = 0; i < items.length; i++) {
-        if ((items[i]._id === id) && (items[i].isObtained === false)) {
-          items[i].isObtained = true;
-          filter.push(items[i])
+      for (let i = 0; i < filter.length; i++) {
+        if ((filter[i]._id === id) && (filter[i].isObtained === false)) {
+          filter[i].isObtained = true;
         }
         else if ((items[i]._id === id) && (items[i].isObtained)) {
-          items[i].isObtained = false;
-          filter.push(items[i])
-        }
-        else {
-          filter.push(items[i])
+          filter[i].isObtained = false;
         }
       }
       setItems(filter)
       
-      for (let i = 0; i < items.length; i++) {
-        if(items[i].isObtained){
-          listFilter.push(items[i])
+      for (let i = 0; i < filter.length; i++) {
+        if(filter[i].isObtained){
+          listFilter.push(filter[i])
         }
       }
       setItemList(listFilter)

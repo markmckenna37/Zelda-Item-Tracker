@@ -154,7 +154,7 @@ const checkSeed = [
     },
     {
       name: "wolfosGrotto",
-      title: "",
+      title: "Wolfos Grotto",
       location: "lostWoods",
       color: "red",
       requiredItems: ["bombs", "bombchus"],

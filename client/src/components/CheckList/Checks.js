@@ -3,67 +3,68 @@ import API from "../../utils/API";
 import Area from "../AreaList/Areas";
 import CheckContext from "../../utils/checkContext";
 import DisplayChecks from "../DisplayChecks/index";
+import ItemChecks from "../../utils/itemContext";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Input, TextArea, FormBtn } from "../Form";
 import MessageContext from "../../utils/messageContext";
+import ItemContext from "../../utils/itemContext";
+import { Layout } from "antd";
+const { Content } = Layout;
 
 function Checks() {
   const [checkList, setCheckList] = useState({
     checkList: [],
   });
+
   const [filteredCheckList, setFilteredCheckList] = useState({
     filteredCheckList: [{}],
   });
+
+  const [renderList, setRenderList] = useState({
+    renderList: [{}],
+  });
+
   const { message } = useContext(MessageContext);
+  const { itemList } = useContext(ItemContext);
+
+  const styles = {
+    margin: "5rem 0 0 5rem",
+    width: "800px",
+    height: "300px",
+    background: "",
+  };
 
   useEffect(() => {
     loadChecks();
-    filterChecks();
   }, []);
 
-  // Loads all books and sets them to books
   function loadChecks() {
     API.getChecks()
       .then((res) => {
-
         setCheckList(res.data);
       })
-      .then(
-
-      )
       .catch((err) => console.log(err));
   }
 
-  // function setColor() {
-  //   if (checkList) {}
-  //   for (let i = 0; i < checkList.length; i++) {
-  //     if (checkList[i].isChecked) {
-  //       checkList[i].color = "gray";
-  //     } else if (checkList[i].isAccessible) {
-  //       checkList[i].color = "green";
-  //     } else if (checkList[i].isAccessible === false) {
-  //       checkList[i].color = "red";
-  //     }
-  //   }
-  // }
   function filterChecks() {
-    // setColor()
-    let filter = [];
-
-    for (let i = 0; i < checkList.length; i++) {
-      if (checkList[i].isChecked) {
-        checkList[i].color = "gray";
+    const filter = [...checkList];
+    let render = []
+    for (let i = 0; i < filter.length; i++) {
+      if (filter[i].isChecked) {
+        filter[i].color = "gray"
       }
-     else if ((checkList[i].isAccessible)&&(!checkList[i].isChecked === false)) {
-        checkList[i].color = "green";
-      } else if ((checkList[i].isAccessible === false)&&(checkList[i].isChecked === false)) {
-        checkList[i].color = "red";
+      else if (filter[i].isAccessible) {
+        filter[i].color = "green"
+      }
+      else if (filter[i].isAccessible === false) {
+        filter[i].color = "red"
       }
     }
-    for (let i = 0; i < checkList.length; i++) {
-      if (checkList[i].location === message) {
-        filter.push({
+    setCheckList(filter)
+    for (let i = 0; i < filter.length; i++) {
+      if (filter[i].location === message) {
+        render.push({
           _id: checkList[i]._id,
           title: checkList[i].title,
           color: checkList[i].color,
@@ -72,14 +73,23 @@ function Checks() {
           isChecked: checkList[i].isChecked,
         });
       }
-      }
-    setFilteredCheckList(filter);
+    }
+    setRenderList(render);
   }
 
+  function handleChecks(id) {
+    const currentChecks = [...checkList]
+    for (let i = 0; i < currentChecks.length; i++) {
+      if (currentChecks[i]._id === id) {
+        currentChecks[i].isChecked = true;
+      }
+    }
+    setCheckList(currentChecks)
+    filterChecks()
+  }
   return (
     <>
-
-      <CheckContext.Provider value={{ checks: filteredCheckList }}>
+      <CheckContext.Provider value={{ currentChecks: filteredCheckList }}>
         <button
           onClick={() => {
             filterChecks();
@@ -87,10 +97,35 @@ function Checks() {
         >
           Show Checks
         </button>
-        <DisplayChecks checks={filteredCheckList} />
+        <Content style={styles}>
+          <List>
+            {renderList.length ? (
+              <>
+                {renderList.map((check) => (
+                    <ListItem key={check._id}>
+                      <a
+                        onClick={() => {
+                          handleChecks(check._id);
+                        }}
+                      >
+                        <h1 style={{ color: check.color }}>{check.title}</h1>
+                      </a>
+                    </ListItem>
+                ))}
+              </>
+            ) : (
+              <ListItem>"OIII"</ListItem>
+            )}
+          </List>
+        </Content>
       </CheckContext.Provider>
     </>
   );
 }
 
 export default Checks;
+    // for (let i = 0; i < filter.length; i++) {
+    //   if (filter[i]._id === id) {
+    //     filter[i].isChecked = true;
+    //   }
+    // }

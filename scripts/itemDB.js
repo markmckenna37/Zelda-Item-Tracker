@@ -8,11 +8,11 @@ mongoose.connect(
 const itemSeed = [
   {
     name: "bow",
-    isObtained: false
+    isObtained: true  
   },
   {
     name: "hookshot",
-    isObtained: false
+    isObtained: true
   },
   {
     name: "longshot",

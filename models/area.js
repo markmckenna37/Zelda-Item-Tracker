@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const areaSchema = new Schema({
-    areas: [{
         name: {
             type: String,
             default: ""
@@ -28,7 +27,6 @@ const areaSchema = new Schema({
             type: Boolean,
             default: false
         }
-    }]
 });
 
 const Area = mongoose.model("Area", areaSchema);

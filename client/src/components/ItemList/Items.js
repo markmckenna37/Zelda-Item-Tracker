@@ -13,6 +13,7 @@ const gridStyle = {
 function Items() {
   // Setting our component's initial state
   const [items, setItems] = useState([])
+  const [itemList, setItemList] = useState([])
   // const [formObject, setFormObject] = useState({})
 
   // Load all books and store them with setBooks
@@ -29,7 +30,26 @@ function Items() {
       .catch(err => console.log(err));
   };
 
+    function handleItems(id, isObtained) {
+      const data = {id, isObtained: !isObtained}
+      API.updateItem(data)
 
+      .then(res => {
+        loadItems()
+        
+      })
+
+
+
+      // console.log("yeh")
+      // API.saveItem({
+      //   isObtained: true
+      // })
+
+      // .then(res => loadItems())
+      // .catch(err => console.log(err));
+
+    }
 
     return (
       <Container fluid>
@@ -38,11 +58,19 @@ function Items() {
             {items.length ? (
                   <Card style={{width: "375px"}} title="Card Title">
                 {items.map(item => (
+                    <a onClick={() => {handleItems(item._id, item.isObtained)}}>
                   <Card.Grid style={gridStyle}>
                   <ListItem key={item._id}>
-                <img style={{height: "45px", width: "45px"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
+                    <>
+                    {item.isObtained ? (
+                      <img style={{height: "45px", width: "45px"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
+                    ) : (
+                    <img style={{height: "45px", width: "45px", opacity: "0.4"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
+                    )}
+                    </>
                   </ListItem>
                   </Card.Grid>
+                    </a>
                 ))}
               </Card>
             ) : (

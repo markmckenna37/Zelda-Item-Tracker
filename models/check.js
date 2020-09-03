@@ -3,7 +3,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const checkSchema = new Schema({
-    checks: [{
         name: {
             type: String,
             default: ""
@@ -28,7 +27,6 @@ const checkSchema = new Schema({
             type: Boolean,
             default: false,
         }
-    }]
 });
 
 const Check = mongoose.model("Check", checkSchema);

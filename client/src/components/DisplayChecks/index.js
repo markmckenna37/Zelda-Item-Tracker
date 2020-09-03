@@ -10,25 +10,14 @@ const styles = {
   margin: "5rem 0 0 5rem",
   width: "800px",
   height: "300px",
-  background: "salmon",
+  background: "",
 };
-//  <button onClick={() => {filterChecks()}}>ewfwefawefa</button>
 
 function DisplayChecks() {
   const { checks } = useContext(CheckContext);
-  function showMe() {
-    console.log(checks);
-  }
 
   return (
     <Content style={styles}>
-      <button
-        onClick={() => {
-          showMe();
-        }}
-      >
-        feawsweehtrehtr
-      </button>
       <List>
         {checks.length ? (
           <>

@@ -28,7 +28,7 @@ const checkSeed = [
       name: "songOfStormsGrotto",
       title: "Song of Storms Grotto",
       location: "kokiriForest",
-      requiredItems: [],
+      requiredItems: ["ocarina", "songOfStorms"],
       isAccessible: false,
       isChecked: false,
     },

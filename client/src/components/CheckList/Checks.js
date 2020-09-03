@@ -50,7 +50,7 @@ const {message} = useContext(MessageContext)
       <CheckContext.Provider value={
         {checks: filteredCheckList}
       }>
-      <button onClick={() => {filterChecks()}}>asedfggr</button>
+      <button onClick={() => {filterChecks()}}>Show Checks</button>
       <DisplayChecks checks={filteredCheckList} />
       </CheckContext.Provider>
       </>

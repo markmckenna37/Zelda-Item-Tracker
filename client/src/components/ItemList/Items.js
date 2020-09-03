@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Card, Avatar } from 'antd';
+import ItemContext from "../../utils/itemContext";
 
 const gridStyle = {
   width: '24%',
@@ -15,6 +16,7 @@ function Items() {
   const [items, setItems] = useState([])
   const [itemList, setItemList] = useState([])
   // const [formObject, setFormObject] = useState({})
+
 
   // Load all books and store them with setBooks
   useEffect(() => {
@@ -30,14 +32,38 @@ function Items() {
       .catch(err => console.log(err));
   };
 
-    function handleItems(id, isObtained) {
-      const data = {id, isObtained: !isObtained}
-      API.updateItem(data)
+    function handleItems(id) {
+      let filter = []
+      let listFilter = []
+      for (let i = 0; i < items.length; i++) {
+        if ((items[i]._id === id) && (items[i].isObtained === false)) {
+          items[i].isObtained = true;
+          filter.push(items[i])
+        }
+        else if ((items[i]._id === id) && (items[i].isObtained)) {
+          items[i].isObtained = false;
+          filter.push(items[i])
+        }
+        else {
+          filter.push(items[i])
+        }
+      }
+      setItems(filter)
+      
+      for (let i = 0; i < items.length; i++) {
+        if(items[i].isObtained){
+          listFilter.push(items[i])
+        }
+      }
+      setItemList(listFilter)
+      
+      // const data = {id, isObtained: !isObtained}
+      // API.updateItem(data)
 
-      .then(res => {
-        loadItems()
+      // .then(res => {
+      //   loadItems()
         
-      })
+      // })
 
 
 
@@ -52,13 +78,16 @@ function Items() {
     }
 
     return (
+      <ItemContext.Provider value={{
+        itemList: itemList
+      }}>
       <Container fluid>
         <Row>
           <Col size="md-6 sm-12">
             {items.length ? (
                   <Card style={{width: "375px"}} title="Card Title">
                 {items.map(item => (
-                    <a onClick={() => {handleItems(item._id, item.isObtained)}}>
+                    <a onClick={() => {handleItems(item._id)}}>
                   <Card.Grid style={gridStyle}>
                   <ListItem key={item._id}>
                     <>
@@ -79,8 +108,16 @@ function Items() {
           </Col>
         </Row>
       </Container>
+      </ItemContext.Provider>
     );
   }
 
 
 export default Items;
+
+// for (const item of items) {
+//   if (item.isObtained === false) {
+//    return item.isObtained === true;
+//   }
+// }
+// loadItems()

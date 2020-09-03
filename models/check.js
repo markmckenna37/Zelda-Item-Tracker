@@ -15,6 +15,10 @@ const checkSchema = new Schema({
             type: String,
             default: ""
         },
+        color: {
+            type: String,
+            default: ""
+        },
         requiredItems: {
             type: Array,
             default: []

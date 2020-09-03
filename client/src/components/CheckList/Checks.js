@@ -51,32 +51,34 @@ function Checks() {
     // setColor()
     let filter = [];
 
-
     for (let i = 0; i < checkList.length; i++) {
-          if (checkList[i].isChecked) {
-            checkList[i].color = "gray";
-          } else if (checkList[i].isAccessible) {
-            checkList[i].color = "green";
-          } else if (checkList[i].isAccessible === false) {
-            checkList[i].color = "red";
-          }
-        }
-
+      if (checkList[i].isChecked) {
+        checkList[i].color = "gray";
+      }
+     else if ((checkList[i].isAccessible)&&(!checkList[i].isChecked === false)) {
+        checkList[i].color = "green";
+      } else if ((checkList[i].isAccessible === false)&&(checkList[i].isChecked === false)) {
+        checkList[i].color = "red";
+      }
+    }
     for (let i = 0; i < checkList.length; i++) {
       if (checkList[i].location === message) {
         filter.push({
           _id: checkList[i]._id,
           title: checkList[i].title,
           color: checkList[i].color,
+          requiredItems: checkList[i].requiredItems,
+          isAccessible: checkList[i].isAccessible,
+          isChecked: checkList[i].isChecked,
         });
       }
-    }
-    console.log(filter)
+      }
     setFilteredCheckList(filter);
   }
 
   return (
     <>
+
       <CheckContext.Provider value={{ checks: filteredCheckList }}>
         <button
           onClick={() => {

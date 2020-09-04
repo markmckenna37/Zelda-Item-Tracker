@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
-import API from "../../utils/API";
+import React from "react";
 import { Col, Row, Container } from "../Grid";
-import { List, ListItem } from "../List";
-import { Card, Avatar } from 'antd';
-import ItemContext from "../../utils/itemContext";
-import App from "../../App"
+import { ListItem } from "../List";
+import { Card } from 'antd';
 
 const gridStyle = {
-  width: '24%',
-  height: "24%",
+  width: '25%',
+  height: "25%",
+  background: "#fafafa"
 };
 
 
@@ -38,24 +36,6 @@ const {items, setItemList} = props
       }
       setItemList(listFilter)
       
-      // const data = {id, isObtained: !isObtained}
-      // API.updateItem(data)
-
-      // .then(res => {
-      //   loadItems()
-        
-      // })
-
-
-
-      // console.log("yeh")
-      // API.saveItem({
-      //   isObtained: true
-      // })
-
-      // .then(res => loadItems())
-      // .catch(err => console.log(err));
-
     }
 
     return (
@@ -63,16 +43,16 @@ const {items, setItemList} = props
         <Row>
           <Col size="md-6 sm-12">
             {items.length ? (
-                  <Card style={{width: "375px"}} title="Card Title">
+                  <Card style={{width: "400px"}} title="Card Title">
                 {items.map(item => (
                     <a onClick={() => {handleItems(item._id)}}>
                   <Card.Grid style={gridStyle}>
                   <ListItem key={item._id}>
                     <>
                     {item.isObtained ? (
-                      <img style={{height: "45px", width: "45px"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
+                      <img style={{height: "55px", width: "50px"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
                     ) : (
-                    <img style={{height: "45px", width: "45px", opacity: "0.4"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
+                    <img style={{height: "55px", width: "45px", opacity: "0.4"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
                     )}
                     </>
                   </ListItem>

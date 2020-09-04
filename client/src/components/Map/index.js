@@ -1,7 +1,6 @@
 import React from "react";
 import Area from "../AreaButton";
 import map from "../../images/hyrulemap.png";
-import Toggle from "../Toggle/index"
 import "./style.css"
 
 function Map(props) {

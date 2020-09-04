@@ -11,10 +11,6 @@ function Checks() {
     checkList: [],
   });
 
-  const [filteredCheckList, setFilteredCheckList] = useState({
-    filteredCheckList: [{}],
-  });
-
   const [renderList, setRenderList] = useState({
     renderList: [{}],
   });
@@ -46,25 +42,35 @@ function Checks() {
     // let itemStr = "";
     itemList.forEach((items) => itemArr.push(items.name));
     let render = [];
-    console.log(itemList)
+    console.log(itemList);
     for (let i = 0; i < filter.length; i++) {
       // itemStr = filter[i].requiredItems.join(", ");
       if (filter[i].requiredItems.length === 0) {
-        filter[i].isAccessible = true
+        filter[i].isAccessible = true;
       }
-     if (
-       (filter[i].requiredItems.every(value => {return (itemArr.indexOf(value) >= 0)}))) {
-        filter[i].isAccessible = true
-     }
-     else if ((filter[i].secondaryItems.length !== 0) && filter[i].secondaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) {
-      filter[i].isAccessible = true
-     }
-     else if ((filter[i].ternaryItems.length !== 0) && filter[i].ternaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) {
-      filter[i].isAccessible = true
-     }
-     else {
-       filter[i].isAccessible = false
-     }
+      if (
+        filter[i].requiredItems.every((value) => {
+          return itemArr.indexOf(value) >= 0;
+        })
+      ) {
+        filter[i].isAccessible = true;
+      } else if (
+        filter[i].secondaryItems.length !== 0 &&
+        filter[i].secondaryItems.every((value) => {
+          return itemArr.indexOf(value) >= 0;
+        })
+      ) {
+        filter[i].isAccessible = true;
+      } else if (
+        filter[i].ternaryItems.length !== 0 &&
+        filter[i].ternaryItems.every((value) => {
+          return itemArr.indexOf(value) >= 0;
+        })
+      ) {
+        filter[i].isAccessible = true;
+      } else {
+        filter[i].isAccessible = false;
+      }
 
       if (filter[i].isChecked) {
         filter[i].color = "gray";
@@ -94,10 +100,9 @@ function Checks() {
   function handleChecks(id) {
     const currentChecks = [...checkList];
     for (let i = 0; i < currentChecks.length; i++) {
-      if ((currentChecks[i]._id === id) && (!currentChecks[i].isChecked)) {
+      if (currentChecks[i]._id === id && !currentChecks[i].isChecked) {
         currentChecks[i].isChecked = true;
-      }
-      else {
+      } else {
         currentChecks[i].isChecked = false;
       }
     }
@@ -144,6 +149,5 @@ export default Checks;
 //     filter[i].isChecked = true;
 //   }
 // }
-
 
 // || (filter[i].secondaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) || (filter[i].ternaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) || filter[i].requiredItems === [])

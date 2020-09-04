@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import Items from "./components/ItemList/Items";
-import DisplayChecks from "./components/DisplayChecks";
 import Checks from "./components/CheckList/Checks"
-import CheckContext from "./utils/checkContext";
 import ItemContext from "./utils/itemContext";
 import MessageContext from "./utils/messageContext";
 import Map from "./components/Map";

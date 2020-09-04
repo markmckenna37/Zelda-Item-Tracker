@@ -102,9 +102,10 @@ function Checks() {
     for (let i = 0; i < currentChecks.length; i++) {
       if (currentChecks[i]._id === id && !currentChecks[i].isChecked) {
         currentChecks[i].isChecked = true;
-      } else {
+      } 
+      else if (currentChecks[i]._id === id && currentChecks[i].isChecked) {
         currentChecks[i].isChecked = false;
-      }
+      } 
     }
     setCheckList(currentChecks);
     filterChecks();

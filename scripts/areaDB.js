@@ -252,7 +252,7 @@ const checkSeed = [
     secondaryItems: [],
     ternaryItems: [],
     isAccessible: true,
-    isChecked: true,
+    isChecked: false,
   },
   {
     name: "swordCheck",
@@ -3042,11 +3042,11 @@ const checkSeed = [
 const itemSeed = [
   {
     name: "bow",
-    isObtained: true  
+    isObtained: false  
   },
   {
     name: "hookshot",
-    isObtained: true
+    isObtained: false
   },
   {
     name: "longshot",

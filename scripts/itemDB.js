@@ -155,6 +155,14 @@ const itemSeed = [
     isObtained: false
   },
   {
+    name: "skullMask",
+    isObtained: false
+  },
+  {
+    name: "maskOfTruth",
+    isObtained: false
+  },
+  {
     name: "wallet1",
     isObtained: false
   },

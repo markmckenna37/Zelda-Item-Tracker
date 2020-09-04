@@ -19,18 +19,34 @@ function App() {
 
   const [message, setMessage] = useState("")
 
+  const [items, setItems] = useState([])
+  const [itemList, setItemList] = useState([])
+  useEffect(() => {
+    loadItems()
+  }, [])
+
+  // Loads all books and sets them to books
+  function loadItems() {
+    API.getItems()
+      .then(res => 
+        setItems(res.data)
+      )
+      .catch(err => console.log(err));
+  };
   
   return (
     <>
       <MessageContext.Provider value={{
         message: message
       }}>
-        
+      <ItemContext.Provider value={{
+        itemList: itemList
+      }}>
       <Layout>
         <Header></Header>
         <Layout>
           <Sider className="itemWindow"></Sider>
-            <Items className="itemList"/>
+            <Items className="itemList" items={items} setItemList={setItemList}/>
             <Layout>
               <Checks/>
               <Content >
@@ -42,67 +58,10 @@ function App() {
           Ant Design ©2018 Created by Ant UED
         </Footer>
       </Layout>
+      </ItemContext.Provider>
       </MessageContext.Provider>
     </>
   );
 }
 export default App;
 
-// const [checks, setChecks] = useState([])
-
-// const [filteredChecks, setFilteredChecks] = useState("")
-
-
-
-//     API.getChecks()
-//     .then(res => 
-//       setCheckList(res.data)
-//         )
-//         .catch(err => console.log(err));
-    
-// function filterChecks(){
-//   console.log(message)
-//     let filter = []
-//     for (let i = 0; i < checkList.length; i++) {
-//         if (checkList[i].location === message) {
-//           filter.push(checkList[i].title)
-//         }
-//     }
-//     setFilteredChecks(filter)
-//     console.log(filter)
-//   }
-  // function filterChecks(checks) {
-  //   return checks === message
-  // }
-  // function getFilteredChecks() {
-  //   checkList.filter(filterChecks)
-  // }
-// function filterChecks() {
-//   findChecks()
-//  const filteredChecks = checkList.filter((checkList) =>
-//   message
-//   );
-//   console.log(filteredChecks)
-//   setFilteredChecks(filteredChecks)
-// }
-// const [checkList, setCheckList] = useState([])
-
-// useEffect(() => {
-//   loadChecks()
-// }, [])
-
-// function loadChecks() {
-//   API.getChecks()
-//     .then(res => 
-//       setCheckList(res.data)
-//     )
-//     .catch(err => console.log(err));
-// };
-
-// function filterChecks() {
-//   const filteredChecks = checkList.filter((check) => check.name === message)
-//   this.setState({
-//     checkList: filteredChecks
-//   })
-//   console.log(filteredChecks)
-// }

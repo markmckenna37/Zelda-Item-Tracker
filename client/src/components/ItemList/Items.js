@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
 import { Card, Avatar } from 'antd';
 import ItemContext from "../../utils/itemContext";
+import App from "../../App"
 
 const gridStyle = {
   width: '24%',
@@ -11,26 +12,11 @@ const gridStyle = {
 };
 
 
-function Items() {
-  // Setting our component's initial state
-  const [items, setItems] = useState([])
-  const [itemList, setItemList] = useState([])
+function Items(props) {
+const {items, setItemList} = props
   // const [formObject, setFormObject] = useState({})
 
 
-  // Load all books and store them with setBooks
-  useEffect(() => {
-    loadItems()
-  }, [])
-
-  // Loads all books and sets them to books
-  function loadItems() {
-    API.getItems()
-      .then(res => 
-        setItems(res.data)
-      )
-      .catch(err => console.log(err));
-  };
 
     function handleItems(id) {
       let filter = [...items]
@@ -43,7 +29,7 @@ function Items() {
           filter[i].isObtained = false;
         }
       }
-      setItems(filter)
+      setItemList(filter)
       
       for (let i = 0; i < filter.length; i++) {
         if(filter[i].isObtained){
@@ -73,9 +59,6 @@ function Items() {
     }
 
     return (
-      <ItemContext.Provider value={{
-        itemList: itemList
-      }}>
       <Container fluid>
         <Row>
           <Col size="md-6 sm-12">
@@ -103,7 +86,6 @@ function Items() {
           </Col>
         </Row>
       </Container>
-      </ItemContext.Provider>
     );
   }
 

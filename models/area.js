@@ -23,6 +23,10 @@ const areaSchema = new Schema({
             type: Array,
             default: []
         },
+        alternateItems: {
+            type: Array,
+            default: []
+        },
         isAccessible: {
             type: Boolean,
             default: false

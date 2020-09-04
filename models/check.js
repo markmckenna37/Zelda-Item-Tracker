@@ -23,6 +23,14 @@ const checkSchema = new Schema({
             type: Array,
             default: []
         },
+        secondaryItems: {
+            type: Array,
+            default: []
+        },
+        ternaryItems: {
+            type: Array,
+            default: []
+        },
         isAccessible: {
             type: Boolean,
             default: false

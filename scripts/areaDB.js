@@ -12,6 +12,7 @@ const areaSeed = [
     top: "425px",
     left: "950px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -20,6 +21,7 @@ const areaSeed = [
     top: "350px",
     left: "1100px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -28,6 +30,7 @@ const areaSeed = [
     top: "325px",
     left: "925px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -36,6 +39,7 @@ const areaSeed = [
     top: "350px",
     left: "650px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -44,6 +48,7 @@ const areaSeed = [
     top: "225px",
     left: "575px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -52,6 +57,7 @@ const areaSeed = [
     top: "155px",
     left: "600px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -60,6 +66,7 @@ const areaSeed = [
     top: "155px",
     left: "775px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -68,6 +75,7 @@ const areaSeed = [
     top: "160px",
     left: "875px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -75,7 +83,8 @@ const areaSeed = [
     title: "Death Mountain",
     top: "100px",
     left: "750px",
-    requiredItems: ["zeldasLetter", "bombs"],
+    requiredItems: ["bombs"],
+    alternateItems: ["zeldasLetter"],
     isAccessible: false,
   },
   {
@@ -83,7 +92,8 @@ const areaSeed = [
     title: "Goron City",
     top: "60px",
     left: "800px",
-    requiredItems: [],
+    requiredItems: ["bombs"],
+    alternateItems: ["zeldasLetter"],
     isAccessible: true,
   },
   {
@@ -91,7 +101,8 @@ const areaSeed = [
     title: "Dodongo's Cavern",
     top: "60px",
     left: "740px",
-    requiredItems: ["bombs", "strength1", "bombchus"],
+    requiredItems: ["strength1"],
+    alternateItems: ["bombs"],
     isAccessible: false,
   },
   {
@@ -99,7 +110,8 @@ const areaSeed = [
     title: "Zora's River",
     top: "225px",
     left: "925px",
-    requiredItems: ["bombs", "silverScale"],
+    requiredItems: ["bombs"],
+    alternateItems: ["silverScale"],
     isAccessible: false,
   },
   {
@@ -107,7 +119,8 @@ const areaSeed = [
     title: "Zora's Domain",
     top: "175px",
     left: "1150px",
-    requiredItems: ["ocarina", "lullaby", "silverScale"],
+    requiredItems: ["ocarina", "lullaby"],
+    alternateItems: ["silverScale"],
     isAccessible: false,
   },
   {
@@ -115,7 +128,8 @@ const areaSeed = [
     title: "Jabu Jabu",
     top: "125px",
     left: "1125px",
-    requiredItems: ["bottle1"],
+    requiredItems: ["ocarina", "lullaby", "bottle1", "rutosLetter"],
+    alternateItems: ["silverScale", "bottle1", "rutosLetter"],
     isAccessible: false,
   },
   {
@@ -124,6 +138,7 @@ const areaSeed = [
     top: "550px",
     left: "455px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -132,6 +147,7 @@ const areaSeed = [
     top: "275px",
     left: "950px",
     requiredItems: ["hookshot", "ocarina", "minuet", "saria"],
+    alternateItems: ["hookshot", "ocarina", "saria"],
     isAccessible: false,
   },
   {
@@ -139,7 +155,8 @@ const areaSeed = [
     title: "Fire Temple",
     top: "20px",
     left: "790px",
-    requiredItems: ["redTunic", "hookshot", "ocarina", "bolero"],
+    requiredItems: ["redTunic", "hookshot"],
+    alternateItems: ["redTunic", "ocarina", "bolero"],
     isAccessible: false,
   },
   {
@@ -147,7 +164,8 @@ const areaSeed = [
     title: "Ice Cavern",
     top: "100px",
     left: "1150px",
-    requiredItems: ["rutosLetter", "silverScale", "bottle1", "ocarina", "lullaby", ],
+    requiredItems: ["rutosLetter", "silverScale", "ocarina", "lullaby"],
+    alternateItems: ["rutosLetter", "silverScale"],
     isAccessible: false,
   },
   {
@@ -156,6 +174,7 @@ const areaSeed = [
     top: "640px",
     left: "440px",
     requiredItems: ["hookshot", "ironBoots", "blueTunic"],
+    alternateItems: [],
     isAccessible: false,
   },
   {
@@ -164,6 +183,7 @@ const areaSeed = [
     top: "155px",
     left: "825px",
     requiredItems: ["ocarina", "songOfStorms"],
+    alternateItems: [],
     isAccessible: false,
   },
   {
@@ -172,6 +192,7 @@ const areaSeed = [
     top: "150px",
     left: "930px",
     requiredItems: ["ocarina", "nocturn", "hookshot", "magic1", "dinsFire", "lensOfTruth"],
+    alternateItems: [],
     isAccessible: false,
   },
   {
@@ -180,6 +201,7 @@ const areaSeed = [
     top: "250px",
     left: "300px",
     requiredItems: [],
+    alternateItems: [],
     isAccessible: true,
   },
   {
@@ -187,7 +209,8 @@ const areaSeed = [
     title: "Gerudo Training Ground",
     top: "175px",
     left: "270px",
-    requiredItems: ["longshot", "ocarina", "epona"],
+    requiredItems: ["longshot"],
+    alternateItems: ["ocarina", "epona"],
     isAccessible: true,
   },
   {
@@ -195,7 +218,8 @@ const areaSeed = [
     title: "Desert Wasteland/Oasis",
     top: "175px",
     left: "120px",
-    requiredItems: ["ocarina", "requiem", "longshot", "hoverBoots", "lensOfTruth"],
+    requiredItems: ["ocarina", "requiem"],
+    alternateItems: ["longshot", "lensOfTruth", "magic1"],
     isAccessible: false,
   },
   {
@@ -203,7 +227,8 @@ const areaSeed = [
     title: "Sprit Temple",
     top: "140px",
     left: "15px",
-    requiredItems: [],
+    requiredItems: ["ocarina", "requiem"],
+    alternateItems: ["longshot", "lensOfTruth", "magic1"],
     isAccessible: false,
   },
   {
@@ -212,6 +237,7 @@ const areaSeed = [
     top: "60px",
     left: "625px",
     requiredItems: ["forestMedallion", "fireMedallion", "waterMedallion", "shadowMedallion", "spiritMedallion", "lightMedallion"],
+    alternateItems: [],
     isAccessible: false,
   },
 ];

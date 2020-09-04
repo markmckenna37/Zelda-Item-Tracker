@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import API from "../../utils/API";
-import Area from "../AreaList/Areas";
-import CheckContext from "../../utils/checkContext";
-import DisplayChecks from "../DisplayChecks/index";
-import ItemChecks from "../../utils/itemContext";
-import { Col, Row, Container } from "../Grid";
 import { List, ListItem } from "../List";
-import { Input, TextArea, FormBtn } from "../Form";
 import MessageContext from "../../utils/messageContext";
 import ItemContext from "../../utils/itemContext";
 import { Layout } from "antd";
@@ -56,10 +50,22 @@ function Checks() {
     for (let i = 0; i < filter.length; i++) {
       // itemStr = filter[i].requiredItems.join(", ");
       if (filter[i].requiredItems.length === 0) {
+        filter[i].isAccessible = true
       }
-     if (filter[i].requiredItems.every(value => {return (itemArr.indexOf(value) >= 0)})) {
+     if (
+       (filter[i].requiredItems.every(value => {return (itemArr.indexOf(value) >= 0)}))) {
         filter[i].isAccessible = true
      }
+     else if ((filter[i].secondaryItems.length !== 0) && filter[i].secondaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) {
+      filter[i].isAccessible = true
+     }
+     else if ((filter[i].ternaryItems.length !== 0) && filter[i].ternaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) {
+      filter[i].isAccessible = true
+     }
+     else {
+       filter[i].isAccessible = false
+     }
+
       if (filter[i].isChecked) {
         filter[i].color = "gray";
       } else if (filter[i].isAccessible) {
@@ -88,8 +94,11 @@ function Checks() {
   function handleChecks(id) {
     const currentChecks = [...checkList];
     for (let i = 0; i < currentChecks.length; i++) {
-      if (currentChecks[i]._id === id) {
+      if ((currentChecks[i]._id === id) && (!currentChecks[i].isChecked)) {
         currentChecks[i].isChecked = true;
+      }
+      else {
+        currentChecks[i].isChecked = false;
       }
     }
     setCheckList(currentChecks);
@@ -135,3 +144,6 @@ export default Checks;
 //     filter[i].isChecked = true;
 //   }
 // }
+
+
+// || (filter[i].secondaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) || (filter[i].ternaryItems.every(value => {return (itemArr.indexOf(value) >= 0)})) || filter[i].requiredItems === [])

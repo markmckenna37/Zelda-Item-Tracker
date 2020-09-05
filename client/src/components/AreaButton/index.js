@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useContext } from "react";
 import API from "../../utils/API";
 import Tippy from "@tippy.js/react";
-import checkContext from "../../utils/checkContext"
+import checkContext from "../../utils/checkContext";
 import "./style.css";
 import "tippy.js/dist/tippy.css";
 
 function Area(props) {
   const [areas, setAreas] = useState([]);
-  const {checks} = useContext(checkContext)
+  const { checks } = useContext(checkContext);
   // const [checks, setChecks] = useState([])
 
   // Load all books and store them with setBooks
   useEffect(() => {
     loadAreas();
+    console.log(checks);
   }, []);
 
   // Loads all books and sets them to books
@@ -32,7 +33,7 @@ function Area(props) {
               style={{ top: area.top, left: area.left }}
               onClick={() => {
                 props.setMessage(area.name);
-                
+                props.filterChecks(area.name);
               }}
             ></button>
           </Tippy>

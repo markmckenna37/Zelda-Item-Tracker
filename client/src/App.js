@@ -8,6 +8,7 @@ import Map from "./components/Map";
 import "./App.css";
 import { Layout } from "antd";
 import API from "./utils/API";
+import CheckContext from "./utils/checkContext";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -16,8 +17,13 @@ function App() {
 
   const [items, setItems] = useState([]);
   const [itemList, setItemList] = useState([]);
+
+  const [checkList, setCheckList] = useState({
+    checkList: [],
+  });
   useEffect(() => {
     loadItems();
+    loadChecks();
   }, []);
 
   // Loads all books and sets them to books
@@ -27,12 +33,26 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+
+  function loadChecks() {
+    API.getChecks()
+      .then((res) => {
+        setCheckList(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
+
   return (
     <>
       <MessageContext.Provider
         value={{
           message: message,
         }}
+      >
+      <CheckContext.Provider 
+      value={{
+        checks: checkList,
+      }}
       >
         <ItemContext.Provider
           value={{
@@ -62,6 +82,7 @@ function App() {
             </Footer>
           </Layout>
         </ItemContext.Provider>
+        </CheckContext.Provider>
       </MessageContext.Provider>
     </>
   );

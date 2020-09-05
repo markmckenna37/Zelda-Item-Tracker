@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import API from "../../utils/API";
 import Tippy from "@tippy.js/react";
+import checkContext from "../../utils/checkContext"
 import "./style.css";
 import "tippy.js/dist/tippy.css";
 
 function Area(props) {
   const [areas, setAreas] = useState([]);
+  const {checks} = useContext(checkContext)
   // const [checks, setChecks] = useState([])
 
   // Load all books and store them with setBooks
@@ -30,6 +32,7 @@ function Area(props) {
               style={{ top: area.top, left: area.left }}
               onClick={() => {
                 props.setMessage(area.name);
+                
               }}
             ></button>
           </Tippy>

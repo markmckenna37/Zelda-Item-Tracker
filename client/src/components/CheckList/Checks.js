@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
-import API from "../../utils/API";
+import {Button} from "antd"
 import { List, ListItem } from "../List";
 import MessageContext from "../../utils/messageContext";
 import ItemContext from "../../utils/itemContext";
 import { Layout } from "antd";
+import CheckContext from "../../utils/checkContext";
 const { Content } = Layout;
 
 function Checks() {
-  const [checkList, setCheckList] = useState({
-    checkList: [],
-  });
+
+const { checks } = useContext(CheckContext)
 
   const [renderList, setRenderList] = useState({
     renderList: [{}],
@@ -24,20 +24,8 @@ function Checks() {
     background: "",
   };
 
-  useEffect(() => {
-    loadChecks();
-  }, []);
-
-  function loadChecks() {
-    API.getChecks()
-      .then((res) => {
-        setCheckList(res.data);
-      })
-      .catch((err) => console.log(err));
-  }
-
   function filterChecks() {
-    const filter = [...checkList];
+    const filter = [...checks];
     let itemArr = [];
     itemList.forEach((items) => itemArr.push(items.name));
     let render = [];
@@ -78,16 +66,15 @@ function Checks() {
         filter[i].color = "red";
       }
     }
-    setCheckList(filter);
     for (let i = 0; i < filter.length; i++) {
       if (filter[i].location === message) {
         render.push({
-          _id: checkList[i]._id,
-          title: checkList[i].title,
-          color: checkList[i].color,
-          requiredItems: checkList[i].requiredItems,
-          isAccessible: checkList[i].isAccessible,
-          isChecked: checkList[i].isChecked,
+          _id: checks[i]._id,
+          title: checks[i].title,
+          color: checks[i].color,
+          requiredItems: checks[i].requiredItems,
+          isAccessible: checks[i].isAccessible,
+          isChecked: checks[i].isChecked,
         });
       }
     }
@@ -96,7 +83,7 @@ function Checks() {
   }
 
   function handleChecks(id) {
-    const currentChecks = [...checkList];
+    const currentChecks = [...checks];
     for (let i = 0; i < currentChecks.length; i++) {
       if (currentChecks[i]._id === id && !currentChecks[i].isChecked) {
         currentChecks[i].isChecked = true;
@@ -105,18 +92,19 @@ function Checks() {
         currentChecks[i].isChecked = false;
       } 
     }
-    setCheckList(currentChecks);
     filterChecks();
   }
   return (
     <>
-      <button
+      <Button
+      type="primary"
+      size={"large"}
         onClick={() => {
           filterChecks();
         }}
       >
         Show Checks
-      </button>
+      </Button>
       <Content style={styles}>
         <List>
           {renderList.length ? (
@@ -134,7 +122,11 @@ function Checks() {
               ))}
             </>
           ) : (
-            <ListItem>"OIII"</ListItem>
+            <>
+            <h2>Welcome to The Legend of Zelda: Ocarina of Time Randomizer Item Tracker.</h2>
+            <h3>To get started, simply check the items you acquire on the list to the left. If you need a hint, click the "show checks" button above to show the current accessible item locations!
+            </h3>
+            </>
           )}
         </List>
       </Content>

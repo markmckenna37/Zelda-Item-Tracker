@@ -43,7 +43,7 @@ const {items, setItemList} = props
         <Row>
           <Col size="md-6 sm-12">
             {items.length ? (
-                  <Card style={{width: "500px"}} title="Card Title">
+                  <Card style={{width: "500px"}} title="Item List">
                 {items.map(item => (
                     <a onClick={() => {handleItems(item._id)}}>
                   <Card.Grid style={gridStyle}>

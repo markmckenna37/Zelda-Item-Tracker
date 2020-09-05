@@ -18,7 +18,7 @@ function Checks() {
   const { message } = useContext(MessageContext);
   const { itemList } = useContext(ItemContext);
   const styles = {
-    margin: "5rem 0 0 5rem",
+    margin: "75px 0 0 75px",
     width: "800px",
     height: "300px",
     background: "",
@@ -39,12 +39,10 @@ function Checks() {
   function filterChecks() {
     const filter = [...checkList];
     let itemArr = [];
-    // let itemStr = "";
     itemList.forEach((items) => itemArr.push(items.name));
     let render = [];
     console.log(itemList);
     for (let i = 0; i < filter.length; i++) {
-      // itemStr = filter[i].requiredItems.join(", ");
       if (filter[i].requiredItems.length === 0) {
         filter[i].isAccessible = true;
       }

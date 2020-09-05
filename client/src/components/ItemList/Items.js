@@ -4,8 +4,8 @@ import { ListItem } from "../List";
 import { Card } from 'antd';
 
 const gridStyle = {
-  width: '25%',
-  height: "25%",
+  width: '20%',
+  height: "20%",
   background: "#fafafa"
 };
 
@@ -43,7 +43,7 @@ const {items, setItemList} = props
         <Row>
           <Col size="md-6 sm-12">
             {items.length ? (
-                  <Card style={{width: "400px"}} title="Card Title">
+                  <Card style={{width: "500px"}} title="Card Title">
                 {items.map(item => (
                     <a onClick={() => {handleItems(item._id)}}>
                   <Card.Grid style={gridStyle}>

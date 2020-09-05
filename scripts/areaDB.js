@@ -2745,7 +2745,7 @@ const checkSeed = [
     title: "Sun Block Room",
     location: "spiritTemple",
     color: "red",
-    requiredItems: ["carina", "requiem", "bombs"],
+    requiredItems: ["ocarina", "requiem", "bombs"],
     secondaryItems: [],
     ternaryItems: [],
     isAccessible: false,
@@ -3094,6 +3094,14 @@ const itemSeed = [
   },
   {
     name: "mirrorShield",
+    isObtained: false
+  },
+  {
+    name: "silverScale",
+    isObtained: false
+  },
+  {
+    name: "goldScale",
     isObtained: false
   },
   {

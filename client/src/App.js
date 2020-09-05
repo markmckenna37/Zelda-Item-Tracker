@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from "react";
+import LoginButton from "./components/LoginButton/LoginButton"
 import Items from "./components/ItemList/Items";
 import Checks from "./components/CheckList/Checks"
 import ItemContext from "./utils/itemContext";
@@ -40,6 +41,7 @@ function App() {
       <ItemContext.Provider value={{
         itemList: itemList
       }}>
+      <LoginButton/>
       <Layout>
         <Header></Header>
         <Layout>

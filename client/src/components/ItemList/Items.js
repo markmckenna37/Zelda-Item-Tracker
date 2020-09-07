@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Container } from "../Grid";
+import { Col, Row } from "../Grid";
 import { ListItem } from "../List";
 import { Card } from 'antd';
 
@@ -39,7 +39,6 @@ const {items, setItemList} = props
     }
 
     return (
-      <Container fluid>
         <Row>
           <Col size="md-6 sm-12">
             {items.length ? (
@@ -65,7 +64,6 @@ const {items, setItemList} = props
             )}
           </Col>
         </Row>
-      </Container>
     );
   }
 

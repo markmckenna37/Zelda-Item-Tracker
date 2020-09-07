@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Area from "../AreaButton";
 import map from "../../images/hyrulemap.png";
 import "./style.css"

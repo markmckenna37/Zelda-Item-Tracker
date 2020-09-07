@@ -2,7 +2,7 @@ import React from "react";
 
 const CheckContext = React.createContext({
  checks: [],
- handleBtnClick: () => console.log("checkContextclick")
+ handleChecks: () => {}
 });
 
 export default CheckContext;

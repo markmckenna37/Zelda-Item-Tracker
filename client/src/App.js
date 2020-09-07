@@ -1,85 +1,60 @@
 import React, { useState, useEffect } from "react";
-import LoginButton from "./components/LoginButton/LoginButton";
-import Items from "./components/ItemList/Items";
-import ItemContext from "./utils/itemContext";
-import MessageContext from "./utils/messageContext";
-import Container from "./components/Container/container"
-import "./App.css";
-import { Layout } from "antd";
-import API from "./utils/API";
-import CheckContext from "./utils/checkContext";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import axios from "axios";
+import Nav from "./components/Nav";
+import Main from "./pages/main";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 
-const { Header, Content, Footer, Sider } = Layout;
+import "./App.css";
 
 function App() {
-  const [message, setMessage] = useState("");
-  const [items, setItems] = useState([]);
-  const [itemList, setItemList] = useState([]);
-
-  const [checkList, setCheckList] = useState({
-    checkList: [],
+  const [state, setState] = useState({
+    loggedIn: false,
+    username: null,
   });
+
   useEffect(() => {
-    loadItems();
-    loadChecks();
-  }, []);
+    getUser();
+  });
 
-  // Loads all books and sets them to books
-  function loadItems() {
-    API.getItems()
-      .then((res) => setItems(res.data))
-      .catch((err) => console.log(err));
-  }
+  const updateUser = (userObject) => {
+    setState(userObject);
+  };
 
+  const getUser = () => {
+    axios.get("/user/").then((response) => {
+      console.log("Get user response: ");
+      console.log(response.data);
+      if (response.data.user) {
+        console.log("Get User: There is a user saved in the server session: ");
 
-  function loadChecks() {
-    API.getChecks()
-      .then((res) => {
-        setCheckList(res.data);
-      })
-      .catch((err) => console.log(err));
-  }
+        setState({
+          loggedIn: true,
+          username: response.data.user.username,
+        });
+      } else {
+        console.log("Get user: no user");
+        setState({
+          loggedIn: false,
+          username: null,
+        });
+      }
+    });
+  };
 
   return (
-    <>
-      <MessageContext.Provider
-        value={{
-          message: message,
-        }}
-      >
-      <CheckContext.Provider 
-      value={{
-        checks: checkList,
-      }}
-      >
-        <ItemContext.Provider
-          value={{
-            itemList: itemList,
-          }}
-        >
-          <Layout>
-            <Header>
-              <LoginButton />
-            </Header>
-            <Layout>
-              <Sider className="itemWindow"></Sider>
-              <Items
-                className="itemList"
-                items={items}
-                setItemList={setItemList}
-              />
-              <Layout>
-                <Container setMessage={setMessage} />
-              </Layout>
-            </Layout>
-            <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2018 Created by Ant UED
-            </Footer>
-          </Layout>
-        </ItemContext.Provider>
-        </CheckContext.Provider>
-      </MessageContext.Provider>
-    </>
+    <Router>
+      <div className="App">
+        <Nav updateUser={updateUser} loggedIn={state.loggedIn} />
+        {/* greet user if logged in: */}
+        {state.loggedIn && <p>Join the party, {state.username}!</p>}
+        {/* Routes to different components */}
+        <Route exact path="/" component={Main} />
+        <Route path="/login" render={() => <Login updateUser={updateUser} />} />
+        <Route path="/signup" render={() => <Signup />} />
+      </div>
+    </Router>
   );
 }
 export default App;

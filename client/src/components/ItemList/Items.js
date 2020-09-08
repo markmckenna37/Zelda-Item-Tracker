@@ -13,10 +13,9 @@ const gridStyle = {
 
 function Items(props) {
 const {items, setItemList} = props
-  // const [formObject, setFormObject] = useState({})
 
 
-
+      //Function to handle the item clicks. On click, each item is matched with the id of the clicked item, then "is obtained" is set to true
     function handleItems(id) {
       let filter = [...items]
       let listFilter = []
@@ -30,6 +29,7 @@ const {items, setItemList} = props
       }
       setItemList(filter)
       
+      //if obtained, the item is pushed onto a filtered item list.
       for (let i = 0; i < filter.length; i++) {
         if(filter[i].isObtained){
           listFilter.push(filter[i])
@@ -45,14 +45,17 @@ const {items, setItemList} = props
           <Col size="md-6 sm-12">
             {items.length ? (
                   <Card style={{width: "500px"}} title="Item List">
+                    {/* mapping our items array onto an antd card */}
                 {items.map(item => (
                     <a onClick={() => {handleItems(item._id)}}>
                   <Card.Grid style={gridStyle}>
                   <ListItem key={item._id}>
                     <Tippy content={item.title}>
+                      {/* if the item is obtained, the picture is rendered with no opacity */}
                     {item.isObtained ? (
                       <img style={{height: "55px", width: "50px"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
                     ) : (
+                      // if the item is not obtained, opacity is added to the rendered image
                     <img style={{height: "55px", width: "45px", opacity: "0.4"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
                     )}
                     </Tippy>
@@ -72,10 +75,3 @@ const {items, setItemList} = props
 
 
 export default Items;
-
-// for (const item of items) {
-//   if (item.isObtained === false) {
-//    return item.isObtained === true;
-//   }
-// }
-// loadItems()

@@ -10,9 +10,11 @@ import { Layout } from "antd";
 import API from "./utils/API";
 import CheckContext from "./utils/checkContext";
 
+//Antd Design components
 const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
+  //Using state for message(to track the selected area) items, and the filtered item list.
   const [message, setMessage] = useState("");
   const [items, setItems] = useState([]);
   const [itemList, setItemList] = useState([]);
@@ -20,19 +22,20 @@ function App() {
   const [checkList, setCheckList] = useState({
     checkList: [],
   });
+  //functions called upon load
   useEffect(() => {
     loadItems();
     loadChecks();
   }, []);
 
-  // Loads all books and sets them to books
+  // Loads all items and sets them to items
   function loadItems() {
     API.getItems()
       .then((res) => setItems(res.data))
       .catch((err) => console.log(err));
   }
 
-
+// Loads all checks and sets them to checks.
   function loadChecks() {
     API.getChecks()
       .then((res) => {
@@ -43,6 +46,7 @@ function App() {
 
   return (
     <>
+    {/* Using context provider for message, checks, and items. */}
       <MessageContext.Provider
         value={{
           message: message,
@@ -60,14 +64,17 @@ function App() {
         >
           <Layout>
             <Header>
+              {/* Buttons for Auth0 authentication */}
               <div className="authButtons">
               <LoginButton id="login"/>
               <LogoutButton id="logout"/>
               </div>
+              {/* Logo and heading */}
               <img className="logo" src={require("./images/triforce2.png")}></img>
               <p className="heading ">Ocarina of Time Randomizer Item Tracker</p>
             </Header>
             <Layout>
+              {/* Sider with our items grid */}
               <Sider className="itemWindow"></Sider>
               <Items
                 className="itemList"
@@ -75,13 +82,13 @@ function App() {
                 setItemList={setItemList}
               />
               <Layout>
+                {/* container that holds the rest of the data: map, check list, etc. */}
                 <Container setMessage={setMessage}>
                   
                 </Container>
               </Layout>
             </Layout>
             <Footer style={{ textAlign: "center" }}>
-              Ant Design ©2018 Created by Ant UED
             </Footer>
           </Layout>
         </ItemContext.Provider>

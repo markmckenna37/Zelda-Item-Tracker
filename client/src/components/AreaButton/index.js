@@ -8,15 +8,13 @@ import "tippy.js/dist/tippy.css";
 function Area(props) {
   const [areas, setAreas] = useState([]);
   const { checks } = useContext(checkContext);
-  // const [checks, setChecks] = useState([])
 
-  // Load all books and store them with setBooks
+//loading areas
   useEffect(() => {
     loadAreas();
-    console.log(checks);
   }, []);
 
-  // Loads all books and sets them to books
+  // Loads all areas and sets them to areas
   function loadAreas() {
     API.getAreas()
       .then((res) => setAreas(res.data))
@@ -25,6 +23,7 @@ function Area(props) {
 
   return (
     <>
+    {/* Mapping all areas onto the map */}
       {areas.map((area) => (
         <div>
           <Tippy content={area.title}>
@@ -32,6 +31,7 @@ function Area(props) {
               className="marker"
               style={{ top: area.top, left: area.left }}
               onClick={() => {
+                //setting the area name and filtering checks to be rendered on click.
                 props.setMessage(area.name);
                 props.filterChecks(area.name);
               }}

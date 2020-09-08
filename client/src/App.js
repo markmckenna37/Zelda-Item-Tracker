@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LoginButton from "./components/LoginButton/LoginButton";
+import LogoutButton from "./components/LogoutButton/LogoutButton";
 import Items from "./components/ItemList/Items";
 import ItemContext from "./utils/itemContext";
 import MessageContext from "./utils/messageContext";
@@ -36,7 +37,7 @@ function App() {
     API.getChecks()
       .then((res) => {
         setCheckList(res.data);
-      })
+      }) 
       .catch((err) => console.log(err));
   }
 
@@ -60,6 +61,8 @@ function App() {
           <Layout>
             <Header>
               <LoginButton />
+              <LogoutButton />
+              <img className="logo" src={require("./images/triforce.png")}></img>
             </Header>
             <Layout>
               <Sider className="itemWindow"></Sider>

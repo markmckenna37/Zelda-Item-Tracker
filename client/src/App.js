@@ -60,9 +60,12 @@ function App() {
         >
           <Layout>
             <Header>
-              <LoginButton />
-              <LogoutButton />
-              <img className="logo" src={require("./images/triforce.png")}></img>
+              <div className="authButtons">
+              <LoginButton id="login"/>
+              <LogoutButton id="logout"/>
+              </div>
+              <img className="logo" src={require("./images/triforce2.png")}></img>
+              <p className="heading ">Ocarina of Time Randomizer Item Tracker</p>
             </Header>
             <Layout>
               <Sider className="itemWindow"></Sider>

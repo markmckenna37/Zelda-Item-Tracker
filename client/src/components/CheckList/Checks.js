@@ -32,7 +32,7 @@ function Checks(props) {
           ) : (
             <>
             <h2>Welcome to The Legend of Zelda: Ocarina of Time Randomizer Item Tracker.</h2>
-            <h3>To get started, simply check the items you acquire on the list to the left. If you need a hint, click the "show checks" button above to show the current accessible item locations!
+            <h3>To get started, simply check the items you acquire on the list to the left. Search for item locations by clicking on the area buttons on the map. If you get stuck, see which item locations are still accessible (green).
             </h3>
             </>
           )}

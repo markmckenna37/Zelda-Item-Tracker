@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Row, Container } from "../Grid";
 import { ListItem } from "../List";
 import { Card } from 'antd';
+import Tippy from "@tippy.js/react";
 
 const gridStyle = {
   width: '20%',
@@ -48,13 +49,13 @@ const {items, setItemList} = props
                     <a onClick={() => {handleItems(item._id)}}>
                   <Card.Grid style={gridStyle}>
                   <ListItem key={item._id}>
-                    <>
+                    <Tippy content={item.title}>
                     {item.isObtained ? (
                       <img style={{height: "55px", width: "50px"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
                     ) : (
                     <img style={{height: "55px", width: "45px", opacity: "0.4"}} src={require(`../../images/${item.name}.png`)} alt="OOT item"></img>
                     )}
-                    </>
+                    </Tippy>
                   </ListItem>
                   </Card.Grid>
                     </a>

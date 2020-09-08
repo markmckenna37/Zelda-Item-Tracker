@@ -7,6 +7,10 @@ const itemSchema = new Schema({
             type: String,
             default: ""
         },
+        title: {
+            type: String,
+            default: ""
+        },
         isObtained: {
             type: Boolean,
             default: false,

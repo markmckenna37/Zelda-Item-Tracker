@@ -69,7 +69,9 @@ function App() {
                 setItemList={setItemList}
               />
               <Layout>
-                <Container setMessage={setMessage} />
+                <Container setMessage={setMessage}>
+                  
+                </Container>
               </Layout>
             </Layout>
             <Footer style={{ textAlign: "center" }}>
